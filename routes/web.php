@@ -11,8 +11,9 @@
 |
 */
 
-Route::get('/test', 'HomeController@admin');
-Route::get('/list', 'HomeController@list');
+Route::get('/', function () {
+    return view('welcome');
+});
 
 Auth::routes();
 
