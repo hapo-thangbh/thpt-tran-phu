@@ -32,14 +32,16 @@
                         <div class="card card-success">
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form role="form">
+                            <form role="form" action="{{ route('categories.store') }}" method="post">
+                                {{ csrf_field() }}
                                 <div class="card-header">
                                     <h3>Thêm danh mục mới</h3>
                                 </div>
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Tiêu đề danh mục</label>
-                                        <input type="text" class="form-control" placeholder="Enter category title">
+                                        <input type="hidden" id="cate_create_route" value="{{ route('categories.store') }}">
+                                        <input type="text" class="form-control" id="cate_name" name="name" placeholder="Enter category title">
                                     </div>
 {{--                                    <div class="form-group">--}}
 {{--                                        <label>Minimal</label>--}}
@@ -56,7 +58,7 @@
                                 </div>
                                 <!-- /.card-body -->
                                 <div class="card-footer">
-                                    <button type="submit" class="btn btn-success">Tạo mới</button>
+                                    <button type="button" id="cate_Ok" class="btn btn-success">Tạo mới</button>
                                     <button type="reset" class="btn btn-success">Làm mới</button>
                                 </div>
                             </form>

@@ -9,11 +9,13 @@
 
     <!-- Font Awesome Icons -->
     <base href="{{ asset('') }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('admin/plugins/fontawesome-free/css/all.min.css') }}">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="{{ asset('admin/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('admin/dist/css/adminlte.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/dist/css/phuc.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/plugins/select2/css/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
     <!-- Google Font: Source Sans Pro -->
@@ -41,19 +43,19 @@
 <!-- jQuery -->
 @yield('script')
 <script src="{{ asset('admin/plugins/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('admin/dist/js/category.js') }}"></script>
 <!-- Bootstrap -->
 <script src="{{ asset('admin/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <!-- overlayScrollbars -->
 <script src="{{ asset('admin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('admin/dist/js/adminlte.js') }}"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <!-- OPTIONAL SCRIPTS -->
 <script src="{{ asset('admin/dist/js/demo.js') }}"></script>
 
 <!-- PAGE PLUGINS -->
 <!-- jQuery Mapael -->
-<script src="{{ asset('admin/plugins/raphael/raphael.min.js') }}"></script>
 <script src="{{ asset('admin/plugins/raphael/raphael.min.js') }}"></script>
 <script src="{{ asset('admin/plugins/jquery-mapael/jquery.mapael.min.js') }}"></script>
 <script src="{{ asset('admin/plugins/jquery-mapael/maps/usa_states.min.js') }}"></script>
