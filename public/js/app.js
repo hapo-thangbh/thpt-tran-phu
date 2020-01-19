@@ -12740,7 +12740,7 @@ var rboxStyle = new RegExp( cssExpand.join( "|" ), "i" );
 
 ( function() {
 
-	// Executing both pixelPosition & boxSizingReliable tests require only one layout
+	// Executing both pixelPosition & boxSizingReliable tests require only one layouts
 	// so they're executed at the same time to save the second computation.
 	function computeStyleTests() {
 
@@ -27082,7 +27082,7 @@ return jQuery;
      * @returns {Function} Returns the new restricted function.
      * @example
      *
-     * var saves = ['profile', 'settings'];
+     * var saves = ['profiles', 'settings'];
      *
      * var done = _.after(saves.length, function() {
      *   console.log('done saving!');
@@ -46398,7 +46398,7 @@ var TransitionGroup = {
     }
 
     // we divide the work into three loops to avoid mixing DOM reads and writes
-    // in each iteration - which helps prevent layout thrashing.
+    // in each iteration - which helps prevent layouts thrashing.
     children.forEach(callPendingCbs);
     children.forEach(recordPosition);
     children.forEach(applyTranslation);
