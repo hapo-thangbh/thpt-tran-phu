@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="{{ asset('admin/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('admin/dist/css/adminlte.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/plugins/select2/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
@@ -57,6 +59,7 @@
 <script src="{{ asset('admin/plugins/jquery-mapael/maps/usa_states.min.js') }}"></script>
 <!-- ChartJS -->
 <script src="{{ asset('admin/plugins/chart.js/Chart.min.js') }}"></script>
+<script src="{{ asset('admin/plugins/select2/js/select2.full.min.js') }}"></script>
 
 <!-- PAGE SCRIPTS -->
 <script src="{{ asset('admin/dist/js/pages/dashboard2.js') }}"></script>
