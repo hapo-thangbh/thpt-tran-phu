@@ -39,7 +39,7 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Tiêu đề danh mục</label>
+                                        <label for="">Tiêu đề danh mục</label>
                                         <input type="hidden" id="cate_create_route" value="{{ route('categories.store') }}">
                                         <input type="text" class="form-control" id="cate_name" name="name" placeholder="Enter category title">
                                     </div>
