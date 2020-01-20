@@ -21,8 +21,11 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
         Route::get('logout','AdminHomeController@getLogout')->name('adminLogout');
         Route::get('reset','AdminHomeController@getReset')->name('adminReset');
         Route::get('index','AdminHomeController@index')->name('indexAdmin');
+        Route::get('profile/{id}', 'AdminUserController@getProfile')->name('AdminProfile');
+        Route::post('profile/change-password', 'AdminUserController@postChangePass')->name('postAdminChangePass');
         Route::resource('categories', 'AdminCategoryController');
         Route::resource('posts', 'AdminPostController');
         Route::resource('pages', 'AdminPageController');
     });
 });
+
