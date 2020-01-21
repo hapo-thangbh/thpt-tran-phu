@@ -18,7 +18,7 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->string('image')->nullable();
             $table->unsignedBigInteger('user_id');
-            $table->longText('content');
+            $table->longText('content')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
