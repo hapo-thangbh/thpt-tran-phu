@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Page;
 use Illuminate\Http\Request;
 
 class AdminPageController extends Controller
@@ -14,7 +15,8 @@ class AdminPageController extends Controller
      */
     public function index()
     {
-        //
+        $setting = Page::first();
+        return view('admin.pages.list', compact('setting'));
     }
 
     /**
@@ -57,7 +59,8 @@ class AdminPageController extends Controller
      */
     public function edit($id)
     {
-        //
+        $show_setting = Page::where('id', $id)->first();
+        return view('admin.pages.edit', compact('show_setting'));
     }
 
     /**

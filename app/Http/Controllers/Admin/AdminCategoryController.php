@@ -103,7 +103,7 @@ class AdminCategoryController extends Controller
     public function destroy($id)
     {
         $cate = Category::find($id);
-        $cate->posts()->detach($cate);
+        $cate->posts()->detach();
         Category::destroy($id);
         return $this->successResponse([], 'Delete Successful !');
     }
