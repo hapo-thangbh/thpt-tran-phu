@@ -1,8 +1,7 @@
 <!-- Main Footer -->
 <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
-    All rights reserved.
+    <strong>Build with all my hear ❤</strong>
     <div class="float-right d-none d-sm-inline-block">
-        <b>Version</b> 3.0.2
+        <b>THPT Tran Phu</b>
     </div>
 </footer>

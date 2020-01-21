@@ -53,6 +53,11 @@
                                                 <img width="350px" height="200px" src="{{ asset('storage/posts/'.$post->image) }}" alt="Image Post">
                                             </td>
                                             <td class="w-25 text-center">
+                                                <a class="btn btn-info btn-sm show-post" href="{{ route('posts.show', $post->id) }}">
+                                                    <i class="fas fa-eye">
+                                                    </i>
+                                                    Show
+                                                </a>
                                                 <a class="btn btn-info btn-sm edit-post" href="javascript:void(0)">
                                                     <i class="fas fa-pencil-alt">
                                                     </i>

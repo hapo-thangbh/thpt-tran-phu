@@ -81,7 +81,8 @@ class AdminPostController extends Controller
      */
     public function show($id)
     {
-        //
+        $show_post = Post::where('id', $id)->first();
+        return view('admin.posts.show', compact('show_post'));
     }
 
     /**
@@ -92,7 +93,8 @@ class AdminPostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $edit_post = Post::where('id', $id)->first();
+        return view('admin.posts.edit', compact('edit_post'));
     }
 
     /**
@@ -116,8 +118,8 @@ class AdminPostController extends Controller
     public function destroy($id)
     {
         $post = Post::find($id);
-        $post->categories()->detach($post);
-        Post::destroy($id);
+        $post->categories()->detach();
+        Post::destroy($post);
         return $this->successResponse([], 'Delete Successful !');
     }
 }
