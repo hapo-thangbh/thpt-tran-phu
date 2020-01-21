@@ -17,7 +17,7 @@ class AdminCategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::paginate('5');
+        $categories = Category::orderBy('updated_at', 'DESC')->paginate(5);
         return view('admin.categories.list', compact('categories'));
     }
 
@@ -102,6 +102,8 @@ class AdminCategoryController extends Controller
      */
     public function destroy($id)
     {
+        $cate = Category::find($id);
+        $cate->posts()->detach($cate);
         Category::destroy($id);
         return $this->successResponse([], 'Delete Successful !');
     }

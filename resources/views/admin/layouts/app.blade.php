@@ -67,6 +67,7 @@
 <script src="{{ asset('admin/dist/js/pages/dashboard2.js') }}"></script>
 <script src="{{ asset('admin/dist/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('admin/dist/js/bootstrap-select.min.js') }}"></script>
+<script src="//cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
 <script src="{{ asset('admin/dist/js/category.js') }}"></script>
 <script src="{{ asset('admin/dist/js/profile.js') }}"></script>
 <script src="{{ asset('admin/dist/js/post.js') }}"></script>

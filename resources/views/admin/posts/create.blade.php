@@ -62,6 +62,12 @@
                                             @endforeach
                                         </select><!-- End -->
                                     </div>
+                                    <div class="form-group">
+                                        <label for="content">Nội dung</label>
+                                        <textarea class="form-control" id="summary-ckeditor" name="summary_ckeditor">
+
+                                        </textarea>
+                                    </div>
                                 </div>
                                 <!-- /.card-body -->
                                 <div class="card-footer">
@@ -109,6 +115,9 @@
             $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
         });
         //end custom input file
+        //custom ckeditor
+        CKEDITOR.replace( 'summary-ckeditor');
+        //end custom ckeditor
     </script>
 @endsection
 

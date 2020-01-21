@@ -20,7 +20,8 @@ class AdminPostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::orderBy('updated_at', 'DESC')->paginate(5);
+        return view('admin.posts.list', compact('posts'));
     }
 
     /**
@@ -64,6 +65,7 @@ class AdminPostController extends Controller
         }else{
             $post->image = "";
         }
+        $post->content = $request->input('summary_ckeditor');
         $post->user_id = Auth::id();
         $post->save();
         $category = Category::find($request->input('post_category_id'));
@@ -113,6 +115,9 @@ class AdminPostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::find($id);
+        $post->categories()->detach($post);
+        Post::destroy($id);
+        return $this->successResponse([], 'Delete Successful !');
     }
 }

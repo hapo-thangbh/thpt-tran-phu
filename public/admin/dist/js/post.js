@@ -4,6 +4,7 @@ $.ajaxSetup({
     }
 });
 $(document).ready(function () {
+    //create
    $('#FormCreatePost').submit(function (e) {
        e.preventDefault();
        let formData = new FormData(this);
@@ -21,7 +22,6 @@ $(document).ready(function () {
                        'Create Successful !',
                        'success'
                    );
-                   this.reset();
                }else {
                    Swal.fire({
                        icon: 'error',
@@ -32,4 +32,38 @@ $(document).ready(function () {
            }
        });
    });
+   //end create
+
+    //delete
+    //delete
+    $('.delete-post').click(function () {
+        var post_id = $(this).data("id");
+        $('#delete-post-modal').modal('show');
+        $('#ok_post_delete').click(function () {
+            $.ajax({
+                url: '/admin/posts/' + post_id,
+                type: 'delete',
+                dataType: 'json',
+                success: function (data) {
+                    if (data.status == true) {
+                        $("#post_id_" + post_id).remove();
+                        Swal.fire(
+                            'Good job!',
+                            'Delete Successful !',
+                            'success'
+                        );
+                        $('#delete-post-modal').modal('hide');
+                    }
+                },
+                error: function (data) {
+                    console.log('Error:', data);
+                }
+            })
+        });
+        // if (confirm("Are You sure want to delete !")){
+        //
+        // }
+    });
+    // end delete
+    //end delete
 });
