@@ -89,9 +89,9 @@ class AdminCategoryController extends Controller
         if ($validator->fails()){
             return $this->errorResponse($validator->errors()->all());
         }
-        $category =  Category::where('id', $id)->first();
-        $cate_update = $category->update($request->all());
-        return $this->successResponse($cate_update, 'Update Successful !');
+        $category =  Category::findOrFail($id);
+        $cateUpdate = $category->update($request->all());
+        return $this->successResponse($cateUpdate, 'Update Successful !');
     }
 
     /**

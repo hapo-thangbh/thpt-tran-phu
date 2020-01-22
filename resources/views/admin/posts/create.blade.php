@@ -56,11 +56,11 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Thuộc danh mục</label>
-                                        <select name="post_category_id[]" required id="post_category_id" multiple data-style="bg-white rounded-pill px-4 py-3 shadow-sm " class="selectpicker w-100">
+                                        <select name="post_category_id[]" required id="post_category_id" multiple="multiple">
                                             @foreach($categories as $category)
                                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
                                             @endforeach
-                                        </select><!-- End -->
+                                        </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="content">Nội dung</label>
@@ -89,8 +89,6 @@
 @section('script')
     <script>
         $(document).ready(function() {
-            $('.selectpicker').selectpicker();
-
             $('#imagePreview').css('display', 'none');
             //image preview before upload
             function readURL(input) {
@@ -118,6 +116,8 @@
         //custom ckeditor
         CKEDITOR.replace( 'summary-ckeditor');
         //end custom ckeditor
+
+        $('#post_category_id').multiselect();
     </script>
 @endsection
 
