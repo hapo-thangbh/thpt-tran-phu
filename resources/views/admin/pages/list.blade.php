@@ -51,12 +51,14 @@
                                     <tbody>
                                         <tr>
 {{--                                            <td>{{ $setting->id }}</td>--}}
-                                            <td>{{ $setting->name }}</td>
-                                            <td>{{ $setting->banner }}</td>
-                                            <td>{{ $setting->address }}</td>
-                                            <td>{{ $setting->phone }}</td>
-                                            <td>{{ $setting->email }}</td>
-                                            <td>{{ $setting->description }}</td>
+                                            <td>{{ isset($setting->name) ? $setting->name : '' }}</td>
+                                            <td>
+                                                <img width="350px" height="200px" src="{{ asset('storage/pages/'.$setting->banner) }}" alt="Image Banner">
+                                            </td>
+                                            <td>{{ isset($setting->address) ? $setting->address : '' }}</td>
+                                            <td>{{ isset($setting->phone) ? $setting->phone : '' }}</td>
+                                            <td>{{ isset($setting->email) ? $setting->email : '' }}</td>
+                                            <td>{{ isset($setting->description) ? $setting->description  : '' }}</td>
                                             <td class="w-25 text-center">
                                                 <a class="btn btn-info btn-sm" href="{{ route('pages.edit', $setting->id) }}">
                                                     <i class="fas fa-pencil-alt">

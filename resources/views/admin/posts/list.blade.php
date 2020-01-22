@@ -58,7 +58,7 @@
                                                     </i>
                                                     Show
                                                 </a>
-                                                <a class="btn btn-info btn-sm edit-post" href="javascript:void(0)">
+                                                <a class="btn btn-info btn-sm edit-post" href="{{ route('posts.edit', $post->id) }}">
                                                     <i class="fas fa-pencil-alt">
                                                     </i>
                                                     Edit

@@ -33,15 +33,15 @@
                         <div class="card card-success">
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form role="form" id="FormCreatePost" action="{{ route('posts.store') }}" method="post" enctype="multipart/form-data">
+                            <form role="form" action="{{ route('posts.update', $post->id) }}" method="put" enctype="multipart/form-data">
                                 {{ csrf_field() }}
                                 <div class="card-header">
                                     <h3>Sửa bài viết</h3>
                                 </div>
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label for="title">Tiêu đề danh mục</label>
-                                        <input type="text" required class="form-control" value="{{ $edit_post->title }}" id="post_title" name="post_title" placeholder="Enter Post Title">
+                                        <label for="title">Tiêu đề bài viết</label>
+                                        <input type="text" required class="form-control" value="{{ $post->title }}" id="post_title" name="post_title" placeholder="Enter Post Title">
                                     </div>
                                     <div class="form-group">
                                         <label for="image">Ảnh</label>
@@ -50,28 +50,31 @@
                                             <label class="custom-file-label" for="customFile">Choose file</label>
                                         </div>
                                         <div>
-                                            <img width="350px" height="200px" src="{{ asset('/storage/posts/'.$edit_post->image) }}" alt="">
+                                            <img id="imageOld" width="350px" height="200px" src="{{ asset('/storage/posts/'.$post->image) }}" alt="">
                                             <img id="imagePreview" src="" alt="Preview Image">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label>Thuộc danh mục</label>
-                                        <select name="post_category_id[]" required id="post_category_id" multiple data-style="bg-white rounded-pill px-4 py-3 shadow-sm " class="selectpicker w-100">
+{{--                                        @php dd($post->categories()->pivot());die(); @endphp--}}
+{{--                                        <select name="post_category_id[]" required id="post_category_id" multiple="multiple">--}}
 {{--                                            @foreach($categories as $category)--}}
-{{--                                                <option value="{{ $category->id }}">{{ $category->name }}</option>--}}
+{{--                                                <option value="{{ $category->id }}"--}}
+{{--                                                        {{ isset($post->categories()->pivot()) == $category->id ? "selected" : "" }}--}}
+{{--                                                >{{ $category->name }}</option>--}}
 {{--                                            @endforeach--}}
-                                        </select><!-- End -->
+{{--                                        </select>--}}
                                     </div>
                                     <div class="form-group">
                                         <label for="content">Nội dung</label>
                                         <textarea class="form-control" id="summary-ckeditor" name="summary_ckeditor">
-                                            {{ $edit_post->content }}
+                                            {{ $post->content }}
                                         </textarea>
                                     </div>
                                 </div>
                                 <!-- /.card-body -->
                                 <div class="card-footer">
-                                    <button type="submit"class="btn btn-success">
+                                    <button type="submit" class="btn btn-success">
                                         Cập nhật
                                     </button>
                                     <button type="reset" class="btn btn-success">Làm mới</button>
@@ -89,7 +92,6 @@
 @section('script')
     <script>
         $(document).ready(function() {
-            $('.selectpicker').selectpicker();
 
             $('#imagePreview').css('display', 'none');
             //image preview before upload
@@ -104,6 +106,7 @@
                 }
             }
             $("#chooseImage").change(function() {
+                $('#imageOld').hide();
                 readURL(this);
             });
         });
@@ -118,6 +121,7 @@
         //custom ckeditor
         CKEDITOR.replace( 'summary-ckeditor');
         //end custom ckeditor
+        $('#post_category_id').multiselect();
     </script>
 @endsection
 
