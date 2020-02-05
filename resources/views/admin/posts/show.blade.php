@@ -51,17 +51,13 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Thuộc danh mục</label>
-                                        <select name="post_category_id[]" required id="post_category_id" multiple="multiple">
                                             @foreach($categories as $category)
-                                                <option value="{{ $category->id }}"
-                                                    {{ isset($post->categories()->id) == $category->id ? "selected" : "" }}
-                                                >{{ $category->name }}</option>
+                                                {{ isset($post->categories()->id) == $category->id ? "1" : 0 }}
                                             @endforeach
-                                        </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="content">Nội dung</label>
-                                        <textarea class="form-control" id="summary-ckeditor" name="summary_ckeditor">
+                                        <textarea readonly class="form-control" id="summary-ckeditor" name="summary_ckeditor">
                                             {{ $post->content }}
                                         </textarea>
                                     </div>

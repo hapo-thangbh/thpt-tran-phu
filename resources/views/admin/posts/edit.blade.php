@@ -40,17 +40,13 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="form-group">
-<<<<<<< HEAD
-                                        <label for="title">Tiêu đề danh mục</label>
-=======
                                         <label for="title">Tiêu đề bài viết</label>
->>>>>>> 34cc359474f0715f5602005a3b3e7b4af2bd33c7
                                         <input type="text" required class="form-control" value="{{ $post->title }}" id="post_title" name="post_title" placeholder="Enter Post Title">
                                     </div>
                                     <div class="form-group">
                                         <label for="image">Ảnh</label>
                                         <div class="custom-file mb-3">
-                                            <input type="file" required class="custom-file-input" id="chooseImage" name="post_image">
+                                            <input type="file" class="custom-file-input" id="chooseImage" name="post_image">
                                             <label class="custom-file-label" for="customFile">Choose file</label>
                                         </div>
                                         <div>
