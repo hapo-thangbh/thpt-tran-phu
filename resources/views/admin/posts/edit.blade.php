@@ -55,24 +55,17 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label>Thuộc danh mục</label>
-                                        <select name="post_category_id[]" required id="post_category_id" multiple data-style="bg-white rounded-pill px-4 py-3 shadow-sm " class="selectpicker w-100">
-                                            @foreach($categories as $category)
-                                                <option value="{{ $category->id }}"
-                                                        {{ isset($post->categories->id) == $category->id ? "selected" : "" }}
-                                                >
-                                                    {{ $category->name }}
-                                                </option>
+                                        <label for="">Thuộc danh mục</label>
+                                        <select class="select2" id="post_category_id" multiple="multiple" data-placeholder="Select a State" style="width: 100%;">
+                                            @foreach ($categories as $value)
+                                                <option
+                                                    @if (in_array($value->id, $categoryId))
+                                                        selected
+                                                    @endif
+                                                    value="{{ $value->id }}"
+                                                >{{ $value->name }}</option>
                                             @endforeach
-                                        </select><!-- End -->
-{{--                                        @php dd($post->categories()->pivot());die(); @endphp--}}
-{{--                                        <select name="post_category_id[]" required id="post_category_id" multiple="multiple">--}}
-{{--                                            @foreach($categories as $category)--}}
-{{--                                                <option value="{{ $category->id }}"--}}
-{{--                                                        {{ isset($post->categories()->pivot()) == $category->id ? "selected" : "" }}--}}
-{{--                                                >{{ $category->name }}</option>--}}
-{{--                                            @endforeach--}}
-{{--                                        </select>--}}
+                                        </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="content">Nội dung</label>
@@ -99,6 +92,7 @@
 @endsection
 
 @section('script')
+
     <script>
         $(document).ready(function() {
 
@@ -130,7 +124,8 @@
         //custom ckeditor
         CKEDITOR.replace( 'summary-ckeditor');
         //end custom ckeditor
-        $('#post_category_id').multiselect();
+        $('#post_category_id').select2();
+        // $('#post_category_id').multiselect();
     </script>
 @endsection
 

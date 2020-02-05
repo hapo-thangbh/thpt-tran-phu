@@ -79,7 +79,7 @@
                                 </div>
                                 <!-- /.card-body -->
                                 <div class="card-footer">
-                                    <button type="button" id="page_ok_update" class="btn btn-success">
+                                    <button type="submit" id="page_ok_update" class="btn btn-success">
                                         Cập nhật
                                     </button>
                                     <button type="reset" class="btn btn-success">Làm mới</button>

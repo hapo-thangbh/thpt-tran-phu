@@ -51,9 +51,12 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Thuộc danh mục</label>
-                                            @foreach($categories as $category)
-                                                {{ isset($post->categories()->id) == $category->id ? "1" : 0 }}
-                                            @endforeach
+{{--                                            @foreach($categories as $category)--}}
+{{--                                                {{ isset($post->categories()->id) == $category->id ? "1" : 0 }}--}}
+{{--                                            @endforeach--}}
+                                        @foreach($post->categories as $category)
+                                            {{ $loop->first ? '' : ',' }}{{ $category->name }}
+                                        @endforeach
                                     </div>
                                     <div class="form-group">
                                         <label for="content">Nội dung</label>

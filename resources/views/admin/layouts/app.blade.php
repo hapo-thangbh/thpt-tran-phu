@@ -14,11 +14,11 @@
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="{{ asset('admin/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
     <!-- Theme style -->
+    <link rel="stylesheet" href="{{ asset('/admin/plugins/select2/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/admin/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/dist/css/adminlte.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/dist/css/phuc.css') }}">
-    <link rel="stylesheet" href="{{ asset('admin/plugins/select2/css/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/dist/css/bootstrap-select.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('admin/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/css/bootstrap-multiselect.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
@@ -68,6 +68,7 @@
 <script src="{{ asset('admin/dist/js/pages/dashboard2.js') }}"></script>
 <script src="{{ asset('admin/dist/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('admin/dist/js/bootstrap-select.min.js') }}"></script>
+<script src="{{ asset('/admin/plugins/select2/js/select2.full.min.js') }}"></script>
 <script src="//cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/js/bootstrap-multiselect.min.js"></script>
 <script src="{{ asset('admin/dist/js/category.js') }}"></script>

@@ -74,6 +74,7 @@ class AdminPageController extends Controller
      */
     public function update(Request $request, $id)
     {
+        dd($request->all());
         $validator = Validator::make($request->all(),
             [
                 'page_name' => 'min:2'
@@ -85,9 +86,7 @@ class AdminPageController extends Controller
         if ($request->hasFile('page_banner')){
             $image = $request->file('page_banner');
             //name = today_random(10)_name
-            dd($image->getClientOriginalName());
             $name = today()->format('Y-m-d'). '_' . Str::random('10'). '_' .$image->getClientOriginalName();
-            dd($name);
             while (file_exists(storage_path('/app/public/pages/'). $name)){
                 $name = today()->format('Y-m-d'). Str::random('10'). '_' .$image->getClientOriginalName();
             }
@@ -102,7 +101,7 @@ class AdminPageController extends Controller
         $setting->email = $request->input('page_email');
         $setting->description = $request->input('page_description');
         $setting->save();
-        return $this->successResponse($setting, 'Update Successful !');
+        return redirect()->back()->with('success', 'Update Successful !');
     }
 
     /**

@@ -56,7 +56,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Thuộc danh mục</label>
-                                        <select name="post_category_id[]" required id="post_category_id" multiple="multiple">
+                                        <select name="post_category_id[]" required id="post_category_id" multiple="multiple" class="select2" style="width: 100%;">
                                             @foreach($categories as $category)
                                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
                                             @endforeach
@@ -117,7 +117,7 @@
         CKEDITOR.replace( 'summary-ckeditor');
         //end custom ckeditor
 
-        $('#post_category_id').multiselect();
+        $('#post_category_id').select2();
     </script>
 @endsection
 

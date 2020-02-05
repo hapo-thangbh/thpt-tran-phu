@@ -96,7 +96,11 @@ class AdminPostController extends Controller
     {
         $post = Post::findOrFail($id);
         $categories = Category::all();
-        return view('admin.posts.edit', compact('post', 'categories'));
+        $categoryId = [];
+        foreach ($post->categories as $value) {
+            array_push($categoryId, $value->id);
+        }
+        return view('admin.posts.edit', compact('post', 'categories', 'categoryId'));
     }
 
     /**
