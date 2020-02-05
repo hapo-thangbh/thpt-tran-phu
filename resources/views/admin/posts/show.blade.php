@@ -46,16 +46,18 @@
                                     <div class="form-group">
                                         <label for="image">Ảnh</label>
                                         <div>
-                                            <img width="450px" height="300px" src="{{ asset('storage/posts/'. $post->image) }}" alt="Preview Image">
+                                            <img width="450px" height="300px" src="{{ asset('storage/posts/'. $post->image ) }}" alt="Preview Image">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label>Thuộc danh mục</label>
-                                        <select name="post_category_id[]" required multiple data-style="bg-white rounded-pill px-4 py-3 shadow-sm" class="selectpicker w-100">
-{{--                                            @foreach($categories as $category)--}}
-{{--                                                <option value="{{ $category->id }}">{{ $category->name }}</option>--}}
-{{--                                            @endforeach--}}
-                                        </select><!-- End -->
+                                        <select name="post_category_id[]" required id="post_category_id" multiple="multiple">
+                                            @foreach($categories as $category)
+                                                <option value="{{ $category->id }}"
+                                                    {{ isset($post->categories()->id) == $category->id ? "selected" : "" }}
+                                                >{{ $category->name }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="content">Nội dung</label>
@@ -91,6 +93,7 @@
     <script>
         //custom ckeditor
         CKEDITOR.replace( 'summary-ckeditor');
+        $('#post_category_id').multiselect();
         //end custom ckeditor
     </script>
 @endsection

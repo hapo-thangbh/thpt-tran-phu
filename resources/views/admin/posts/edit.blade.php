@@ -33,14 +33,18 @@
                         <div class="card card-success">
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form role="form" id="FormCreatePost" action="{{ route('posts.store') }}" method="post" enctype="multipart/form-data">
+                            <form role="form" action="{{ route('posts.update', $post->id) }}" method="put" enctype="multipart/form-data">
                                 {{ csrf_field() }}
                                 <div class="card-header">
                                     <h3>Sửa bài viết</h3>
                                 </div>
                                 <div class="card-body">
                                     <div class="form-group">
+<<<<<<< HEAD
                                         <label for="title">Tiêu đề danh mục</label>
+=======
+                                        <label for="title">Tiêu đề bài viết</label>
+>>>>>>> 34cc359474f0715f5602005a3b3e7b4af2bd33c7
                                         <input type="text" required class="form-control" value="{{ $post->title }}" id="post_title" name="post_title" placeholder="Enter Post Title">
                                     </div>
                                     <div class="form-group">
@@ -65,6 +69,14 @@
                                                 </option>
                                             @endforeach
                                         </select><!-- End -->
+{{--                                        @php dd($post->categories()->pivot());die(); @endphp--}}
+{{--                                        <select name="post_category_id[]" required id="post_category_id" multiple="multiple">--}}
+{{--                                            @foreach($categories as $category)--}}
+{{--                                                <option value="{{ $category->id }}"--}}
+{{--                                                        {{ isset($post->categories()->pivot()) == $category->id ? "selected" : "" }}--}}
+{{--                                                >{{ $category->name }}</option>--}}
+{{--                                            @endforeach--}}
+{{--                                        </select>--}}
                                     </div>
                                     <div class="form-group">
                                         <label for="content">Nội dung</label>
@@ -75,7 +87,7 @@
                                 </div>
                                 <!-- /.card-body -->
                                 <div class="card-footer">
-                                    <button type="submit"class="btn btn-success">
+                                    <button type="submit" class="btn btn-success">
                                         Cập nhật
                                     </button>
                                     <button type="reset" class="btn btn-success">Làm mới</button>
@@ -93,7 +105,6 @@
 @section('script')
     <script>
         $(document).ready(function() {
-            $('.selectpicker').selectpicker();
 
             //image preview before upload
             $('#imagePreview').css('display', 'none');
@@ -123,6 +134,7 @@
         //custom ckeditor
         CKEDITOR.replace( 'summary-ckeditor');
         //end custom ckeditor
+        $('#post_category_id').multiselect();
     </script>
 @endsection
 
