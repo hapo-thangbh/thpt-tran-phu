@@ -81,8 +81,8 @@ class AdminPostController extends Controller
      */
     public function show($id)
     {
-        $show_post = Post::where('id', $id)->first();
-        return view('admin.posts.show', compact('show_post'));
+        $post = Post::findOrFail($id);
+        return view('admin.posts.show', compact('post'));
     }
 
     /**
@@ -93,8 +93,9 @@ class AdminPostController extends Controller
      */
     public function edit($id)
     {
-        $edit_post = Post::where('id', $id)->first();
-        return view('admin.posts.edit', compact('edit_post'));
+        $categories = Category::all();
+        $post = Post::findOrFail($id);
+        return view('admin.posts.edit', compact('categories', 'post'));
     }
 
     /**

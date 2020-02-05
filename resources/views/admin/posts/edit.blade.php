@@ -41,7 +41,7 @@
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="title">Tiêu đề danh mục</label>
-                                        <input type="text" required class="form-control" value="{{ $edit_post->title }}" id="post_title" name="post_title" placeholder="Enter Post Title">
+                                        <input type="text" required class="form-control" value="{{ $post->title }}" id="post_title" name="post_title" placeholder="Enter Post Title">
                                     </div>
                                     <div class="form-group">
                                         <label for="image">Ảnh</label>
@@ -50,22 +50,26 @@
                                             <label class="custom-file-label" for="customFile">Choose file</label>
                                         </div>
                                         <div>
-                                            <img width="350px" height="200px" src="{{ asset('/storage/posts/'.$edit_post->image) }}" alt="">
+                                            <img id="imageOld" width="350px" height="200px" src="{{ asset('/storage/posts/'.$post->image) }}" alt="">
                                             <img id="imagePreview" src="" alt="Preview Image">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label>Thuộc danh mục</label>
                                         <select name="post_category_id[]" required id="post_category_id" multiple data-style="bg-white rounded-pill px-4 py-3 shadow-sm " class="selectpicker w-100">
-{{--                                            @foreach($categories as $category)--}}
-{{--                                                <option value="{{ $category->id }}">{{ $category->name }}</option>--}}
-{{--                                            @endforeach--}}
+                                            @foreach($categories as $category)
+                                                <option value="{{ $category->id }}"
+                                                        {{ isset($post->categories->id) == $category->id ? "selected" : "" }}
+                                                >
+                                                    {{ $category->name }}
+                                                </option>
+                                            @endforeach
                                         </select><!-- End -->
                                     </div>
                                     <div class="form-group">
                                         <label for="content">Nội dung</label>
                                         <textarea class="form-control" id="summary-ckeditor" name="summary_ckeditor">
-                                            {{ $edit_post->content }}
+                                            {{ $post->content }}
                                         </textarea>
                                     </div>
                                 </div>
@@ -91,8 +95,8 @@
         $(document).ready(function() {
             $('.selectpicker').selectpicker();
 
-            $('#imagePreview').css('display', 'none');
             //image preview before upload
+            $('#imagePreview').css('display', 'none');
             function readURL(input) {
                 if (input.files && input.files[0]) {
                     var reader = new FileReader();
@@ -104,6 +108,7 @@
                 }
             }
             $("#chooseImage").change(function() {
+                $('#imageOld').hide();
                 readURL(this);
             });
         });

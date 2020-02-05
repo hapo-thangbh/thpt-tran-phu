@@ -41,12 +41,12 @@
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="title">Tiêu đề danh mục</label>
-                                        <input type="text" required class="form-control" value="{{ $show_post->title }}" placeholder="Enter Post Title">
+                                        <input type="text" required class="form-control" value="{{ $post->title }}" placeholder="Enter Post Title">
                                     </div>
                                     <div class="form-group">
                                         <label for="image">Ảnh</label>
                                         <div>
-                                            <img width="450px" height="300px" src="{{ asset('storage/posts/'. $show_post->image) }}" alt="Preview Image">
+                                            <img width="450px" height="300px" src="{{ asset('storage/posts/'. $post->image) }}" alt="Preview Image">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -60,7 +60,7 @@
                                     <div class="form-group">
                                         <label for="content">Nội dung</label>
                                         <textarea class="form-control" id="summary-ckeditor" name="summary_ckeditor">
-                                            {{ $show_post->content }}
+                                            {{ $post->content }}
                                         </textarea>
                                     </div>
                                 </div>
@@ -71,7 +71,7 @@
                                             Trở về trang danh sách bài viết
                                         </button>
                                     </a>
-                                    <a href="{{ route('posts.edit', $show_post->id) }}">
+                                    <a href="{{ route('posts.edit', $post->id) }}">
                                         <button type="button" class="btn btn-success">
                                             Chỉnh sửa bài viết
                                         </button>
