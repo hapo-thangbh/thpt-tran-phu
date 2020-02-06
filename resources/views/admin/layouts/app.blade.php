@@ -65,7 +65,7 @@
 <script src="{{ asset('admin/plugins/select2/js/select2.full.min.js') }}"></script>
 
 <!-- PAGE SCRIPTS -->
-<script src="{{ asset('admin/dist/js/pages/dashboard2.js') }}"></script>
+{{--<script src="{{ asset('admin/dist/js/pages/dashboard2.js') }}"></script>--}}
 <script src="{{ asset('admin/dist/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('admin/dist/js/bootstrap-select.min.js') }}"></script>
 <script src="{{ asset('/admin/plugins/select2/js/select2.full.min.js') }}"></script>

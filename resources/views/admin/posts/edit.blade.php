@@ -33,20 +33,25 @@
                         <div class="card card-success">
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form role="form" action="{{ route('posts.update', $post->id) }}" method="put" enctype="multipart/form-data">
+                            <form role="form" id="FormEditPost" action="{{ route('posts.update', $post->id) }}" method="post" enctype="multipart/form-data">
                                 {{ csrf_field() }}
+                                @method('PUT')
                                 <div class="card-header">
                                     <h3>Sửa bài viết</h3>
                                 </div>
                                 <div class="card-body">
                                     <div class="form-group">
+                                        <label for="title">ID</label>
+                                        <input type="text" readonly class="form-control" value="{{ $post->id }}" id="post_id">
+                                    </div>
+                                    <div class="form-group">
                                         <label for="title">Tiêu đề bài viết</label>
-                                        <input type="text" required class="form-control" value="{{ $post->title }}" id="post_title" name="post_title" placeholder="Enter Post Title">
+                                        <input type="text" required class="form-control" value="{{ $post->title }}" id="update_post_title" name="update_post_title" placeholder="Enter Post Title">
                                     </div>
                                     <div class="form-group">
                                         <label for="image">Ảnh</label>
                                         <div class="custom-file mb-3">
-                                            <input type="file" class="custom-file-input" id="chooseImage" name="post_image">
+                                            <input type="file" class="custom-file-input" id="chooseImage" name="update_post_image">
                                             <label class="custom-file-label" for="customFile">Choose file</label>
                                         </div>
                                         <div>
@@ -56,7 +61,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="">Thuộc danh mục</label>
-                                        <select class="select2" id="post_category_id" multiple="multiple" data-placeholder="Select a State" style="width: 100%;">
+                                        <select name="update_post_category_id[]" class="select2" id="update_post_category_id" multiple="multiple" data-placeholder="Select a State" style="width: 100%;">
                                             @foreach ($categories as $value)
                                                 <option
                                                     @if (in_array($value->id, $categoryId))
@@ -69,13 +74,14 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="content">Nội dung</label>
-                                        <textarea class="form-control" id="summary-ckeditor" name="summary_ckeditor">
+                                        <textarea class="form-control" id="summary-ckeditor" name="update_post_summary_ckeditor">
                                             {{ $post->content }}
                                         </textarea>
                                     </div>
                                 </div>
                                 <!-- /.card-body -->
                                 <div class="card-footer">
+                                    <input type="hidden" name="post_image_base64">
                                     <button type="submit" class="btn btn-success">
                                         Cập nhật
                                     </button>
@@ -104,6 +110,7 @@
                     reader.onload = function(e) {
                         $('#imagePreview').css('display', 'block');
                         $('#imagePreview').attr('src', e.target.result);
+                        $('[name=post_image_base64]').val(e.target.result);
                     };
                     reader.readAsDataURL(input.files[0]);
                 }
@@ -124,7 +131,7 @@
         //custom ckeditor
         CKEDITOR.replace( 'summary-ckeditor');
         //end custom ckeditor
-        $('#post_category_id').select2();
+        $('#update_post_category_id').select2();
         // $('#post_category_id').multiselect();
     </script>
 @endsection

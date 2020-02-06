@@ -74,7 +74,6 @@ class AdminPageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($request->all());
         $validator = Validator::make($request->all(),
             [
                 'page_name' => 'min:2'
@@ -83,25 +82,15 @@ class AdminPageController extends Controller
             return $this->errorResponse($validator->errors()->first());
         }
         $setting = Page::findOrFail($id);
-        if ($request->hasFile('page_banner')){
-            $image = $request->file('page_banner');
-            //name = today_random(10)_name
-            $name = today()->format('Y-m-d'). '_' . Str::random('10'). '_' .$image->getClientOriginalName();
-            while (file_exists(storage_path('/app/public/pages/'). $name)){
-                $name = today()->format('Y-m-d'). Str::random('10'). '_' .$image->getClientOriginalName();
-            }
-            $image->move(storage_path('/app/public/pages'), $name);
-            $setting->banner = $name;
-        }else{
-            $setting->banner = "";
-        }
+        $base64String = $request->input('image_base64');
+        $setting->banner = $this->saveImgBase64($base64String, 'pages');
         $setting->name = $request->input('page_name');
         $setting->address = $request->input('page_address');
         $setting->phone = $request->input('page_phone');
         $setting->email = $request->input('page_email');
         $setting->description = $request->input('page_description');
         $setting->save();
-        return redirect()->back()->with('success', 'Update Successful !');
+        return $this->successResponse([], 'Update Successful !');
     }
 
     /**
