@@ -33,8 +33,9 @@
                         <div class="card card-success">
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form role="form" id="FormEditPages" action="{{ route('pages.update', $setting->id) }}" method="put" enctype="multipart/form-data">
-                                {{ csrf_token() }}
+                            <form role="form" id="FormEditPages" action="{{ route('pages.update', $setting->id) }}" method="post" enctype="multipart/form-data">
+                                {{ csrf_field() }}
+                                @method('PUT')
                                 <div class="card-header">
                                     <h3>Sửa cài đặt</h3>
                                 </div>
@@ -49,12 +50,12 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="image">Ảnh</label>
-                                        <div class="mb-3">
-                                            <input type="file" required class="custom-file-input" id="page_banner" name="page_banner">
+                                        <div class="custom-file mb-3">
+                                            <input type="file" class="custom-file-input" id="page_banner" name="page_banner">
                                             <label class="custom-file-label" for="customFile">Choose file</label>
                                         </div>
                                         <div>
-                                            <img id="imageOld" width="350px" height="200px" src="{{ asset('/storage/pages/'.$setting->image) }}" alt="">
+                                            <img id="imageOld" width="350px" height="200px" src="{{ asset('/storage/pages/'.$setting->banner) }}" alt="">
                                             <img id="imagePreview" src="" alt="Preview Image">
                                         </div>
                                     </div>
@@ -79,7 +80,8 @@
                                 </div>
                                 <!-- /.card-body -->
                                 <div class="card-footer">
-                                    <button type="button" id="page_ok_update" class="btn btn-success">
+                                    <input type="hidden" name="image_base64">
+                                    <button type="submit" id="page_ok_update" class="btn btn-success">
                                         Cập nhật
                                     </button>
                                     <button type="reset" class="btn btn-success">Làm mới</button>
@@ -105,6 +107,7 @@
                     reader.onload = function(e) {
                         $('#imagePreview').css('display', 'block');
                         $('#imagePreview').attr('src', e.target.result);
+                        $('[name=image_base64]').val(e.target.result);
                     };
                     reader.readAsDataURL(input.files[0]);
                 }

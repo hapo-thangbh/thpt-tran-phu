@@ -96,7 +96,11 @@ class AdminPostController extends Controller
     {
         $post = Post::findOrFail($id);
         $categories = Category::all();
-        return view('admin.posts.edit', compact('post', 'categories'));
+        $categoryId = [];
+        foreach ($post->categories as $value) {
+            array_push($categoryId, $value->id);
+        }
+        return view('admin.posts.edit', compact('post', 'categories', 'categoryId'));
     }
 
     /**
@@ -108,7 +112,23 @@ class AdminPostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validator = Validator::make($request->all(),
+            [
+                'update_post_title'    => 'required|min:3|max:100',
+                'update_post_image'    => 'mimes:jpeg,jpg,png'
+            ]);
+        if ($validator->fails()){
+            return $this->errorResponse($validator->errors()->first());
+        }
+        $post = Post::findOrFail($id);
+        $base64String = $request->input('post_image_base64');
+//        $post->image = $this->saveImgBase64($base64String, 'posts');
+        $post->title = $request->input('update_post_title');
+        $post->content = $request->input('update_post_summary_ckeditor');
+        $post->save();
+        $category = Category::find($request->input('update_post_category_id'));
+        $post->categories()->attach($category);
+        return $this->successResponse([], 'Update Successful !');
     }
 
     /**
@@ -121,7 +141,7 @@ class AdminPostController extends Controller
     {
         $post = Post::find($id);
         $post->categories()->detach();
-        Post::destroy($post);
+        Post::destroy($id);
         return $this->successResponse([], 'Delete Successful !');
     }
 }

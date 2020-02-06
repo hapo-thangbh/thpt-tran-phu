@@ -35,7 +35,6 @@ $(document).ready(function () {
    //end create
 
     //delete
-    //delete
     $('.delete-post').click(function () {
         var post_id = $(this).data("id");
         $('#delete-post-modal').modal('show');
@@ -65,5 +64,34 @@ $(document).ready(function () {
         // }
     });
     // end delete
-    //end delete
+
+    //edit
+    $('#FormEditPost').submit(function (e) {
+        e.preventDefault();
+        let id = $('#post_id').val();
+        $.ajax({
+            url: '/admin/posts/' + id,
+            method: 'put',
+            data: $(this).serialize(),
+            success: function (result) {
+                if (result.status == true){
+                    Swal.fire(
+                        'Good job!',
+                        'Create Successful !',
+                        'success'
+                    );
+                }else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: result.msg,
+                    });
+                }
+            },
+            errors(e) {
+                console.log(e)
+            }
+        });
+    });
+    //end edit
 });
