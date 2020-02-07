@@ -83,7 +83,11 @@ class AdminPageController extends Controller
         }
         $setting = Page::findOrFail($id);
         $base64String = $request->input('image_base64');
-        $setting->banner = $this->saveImgBase64($base64String, 'pages');
+        if ($request->has('image_base64')){
+            $setting->banner = $this->saveImgBase64($base64String, 'pages');
+        }else{
+            $setting->banner = '';
+        }
         $setting->name = $request->input('page_name');
         $setting->address = $request->input('page_address');
         $setting->phone = $request->input('page_phone');
