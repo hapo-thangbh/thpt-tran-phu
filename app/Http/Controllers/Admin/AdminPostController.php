@@ -122,10 +122,8 @@ class AdminPostController extends Controller
         }
         $post = Post::findOrFail($id);
         $base64String = $request->input('post_image_base64');
-        if ($request->has('post_image_base64')){
+        if ($base64String){
             $post->image = $this->saveImgBase64($base64String, 'posts');
-        }else{
-            $post->image = '';
         }
         $post->title = $request->input('update_post_title');
         $post->content = $request->input('update_post_summary_ckeditor');

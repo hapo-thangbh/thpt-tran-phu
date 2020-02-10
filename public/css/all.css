@@ -105,7 +105,7 @@
 }
 
 .slide-item {
-  height: 400px;
+  height: 450px;
 }
 
 .slide-item p {
@@ -135,5 +135,30 @@
 
 .border-custom-2 {
   border-bottom: 1px solid rgba(204, 204, 204, 0.26);
+}
+
+.btn {
+  width: 200px;
+  height: 100px;
+  border-radius: 10px;
+  border: 0;
+  background-color: black;
+  color: white;
+}
+
+.btn.-red {
+  background-color: red;
+}
+
+.btn.-blue {
+  background-color: blue;
+}
+
+.btn.-text-white {
+  color: white;
+}
+
+.btn.-text-black {
+  color: black;
 }
 

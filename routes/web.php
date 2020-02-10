@@ -12,7 +12,8 @@
 */
 
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('categories/{id}', 'CategoryController@show')->name('categories.show');
+Route::get('categories/{id}', 'CategoryController@show')->name('categories_show');
+Route::get('post/{id}', 'PostController@show')->name('post_show');
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
     Route::get('login','AdminHomeController@getLogin')->name('getAdminLogin');
     Route::post('login','AdminHomeController@postLogin')->name('postAdminLogin');

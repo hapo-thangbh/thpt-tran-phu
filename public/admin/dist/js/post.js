@@ -67,6 +67,7 @@ $(document).ready(function () {
 
     //edit
     $('#FormEditPost').submit(function (e) {
+        console.log(CKEDITOR.instances['summary-ckeditor'].getData());
         e.preventDefault();
         let id = $('#post_id').val();
         $.ajax({
