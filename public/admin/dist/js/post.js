@@ -4,8 +4,14 @@ $.ajaxSetup({
     }
 });
 $(document).ready(function () {
+    function CKupdate(){
+        for ( instance in CKEDITOR.instances ){
+            CKEDITOR.instances[instance].updateElement();
+        }
+    }
     //create
    $('#FormCreatePost').submit(function (e) {
+       CKupdate();
        e.preventDefault();
        let formData = new FormData(this);
        $.ajax({
@@ -67,7 +73,7 @@ $(document).ready(function () {
 
     //edit
     $('#FormEditPost').submit(function (e) {
-        console.log(CKEDITOR.instances['summary-ckeditor'].getData());
+        CKupdate();
         e.preventDefault();
         let id = $('#post_id').val();
         $.ajax({
