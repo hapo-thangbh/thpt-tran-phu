@@ -73,9 +73,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="content">Mô tả</label>
-                                        <textarea rows="5" class="form-control" id="page_description" name="page_description">
-                                            {{ $setting->description }}
-                                        </textarea>
+                                        <textarea rows="5" cols="80" class="form-control" id="page_description" name="page_description">{{ $setting->description }}</textarea>
                                     </div>
                                 </div>
                                 <!-- /.card-body -->
